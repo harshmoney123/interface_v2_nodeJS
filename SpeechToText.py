@@ -6,6 +6,8 @@ import sys
 #from __future__ import print_function
 import time
 import boto3
+import boto.s3
+from boto.s3.key import Key
 import requests
 import threading
 
@@ -89,12 +91,17 @@ class SttIntegrated:
             return
 
     def amazon_stt(self):
-        transcribe = boto3.client('transcribe', aws_access_key_id='AKIAIPLJH4IPQUJ36IBA',
-                                  aws_secret_access_key='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',
+
+        # k = Key('celerfama')
+        # s3 = boto3.client('s3', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA', aws_secret_access_key='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')
+        # s3.upload_file(self.inputFilePath , 'celerfama', k)
+
+        transcribe = boto3.client('transcribe', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA',
+                                  aws_secret_access_key='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',
                                   region_name='us-east-2')
         ticks = str(time.time())
         job_name = "Transcribing" + self.inputFilePath + ticks
-        job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/speech.webm"
+        job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/" + self.inputFilePath
         transcribe.start_transcription_job(
             TranscriptionJobName=job_name,
             Media={'MediaFileUri': job_uri},

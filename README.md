@@ -1,5 +1,7 @@
 # interface_v2_nodeJS
 
+- Change the credantials in SpeechToText.py
+
 - run server.js (need to install NodeJS first)
 
 - go to `http://localhost:3700` in the browser
@@ -8,4 +10,4 @@
 
 - you can see the content in text files
 
-- Problem in server.js, line 42-51: If uncomment, server keeps going instead of waiting for the result of python function calls. 
+- Problem in SpeechToText.py, fuc*** Amazon! Google good!

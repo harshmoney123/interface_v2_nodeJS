@@ -1,0 +1,156 @@
+Transcript: b"who you said that they might my new boss she came she told Mike yesterday she's I want to be there at 7 to go to community meeting and so Mike is there at 7:15 he says I wonder where she is because I get up I wasn't planning to come in until 8 and here I am early so she comes in she's I apologize for being late near which is I forgot we might have to scrape windows out here cuz she's marking suck a good morning I bought for five pairs of new pants before I left and had them shortened because I didn't bother to try them on before I left so she's all of them are not short enough she couldn't get it open the lock will not open I don't think it came with a k e and it is beautiful out of shape leather couches before she left"
+Confidence: 0.9645413160324097
+Transcript: b"couldn't get it open some I tried he couldn't get it nice and don't worry I will get one of them"
+Confidence: 0.8647136092185974
+Transcript: b" humidity out of well she said she has to really look and it came with a key cuz I didn't bother she just likes it is not been a good date my pants didn't fit it should go to lunch if I hate them but you know they were kind of long other shoe and we are kidding just buy real high heels and then you won't have to have we shorten the Shakey's wouldn't well first and then the windshield wipers off my car this morning but they were still frozen over. That's in foggy stuff I'm like oh my God"
+Confidence: 0.921741783618927
+Transcript: b" answer this morning not good I'm a go tomorrow but I was thinking that I don't want to you know if I did pull something I don't know why did I think you might be just a bug that kind of feeling real well I'm such an ear infection went in she just sinus infection give us antibiotics at least I'll get over it then. For different kids come up and complain of nasal sinus problems serving time where the dock their docs came on and rode another order it called Bruce and I want to go on going closing early and then finally told me"
+Confidence: 0.9331284165382385
+Transcript: b" he wasn't going today with Mike and your Mike left early today and I didn't leave until 4 and then him at the copy of machine is so much for getting out on time on Friday"
+Confidence: 0.9270433187484741
+Transcript: b' we are catching'
+Confidence: 0.6415243148803711
+Transcript: b" I tried it's really spicy dad doesn't cut up his onions as as smooth as I do and I think when I made it I use my salt and not his salsa"
+Confidence: 0.9535276889801025
+Transcript: b" and when the chili powder says 2 to 4 teaspoons I probably used to he used before so it's real it'll open up your sinuses"
+Confidence: 0.9463154673576355
+Transcript: b" yeah I tried a couple spoonfuls and I think I only cook it for about another half hour then I'll turn it off"
+Confidence: 0.9315832257270813
+Transcript: b" who is a customer appreciation it's been hot dogs and other retirees, they're really nice ladies we got court and they really like that"
+Confidence: 0.865963339805603
+Transcript: b" and I just want me to wash you guys going to do this with emerging like yeah probably but they're really nice and hot dog when I already unfriended you behind on side to teach a pretty good"
+Confidence: 0.903979480266571
+Transcript: b' how to make a cake we had a carrot cake from Costco that cared even the chocolate with the cream'
+Confidence: 0.8613791465759277
+Transcript: b" feeling so it's not real sweet at all it's like a buttercream everything and then medicine that's like those cashews"
+Confidence: 0.8922333717346191
+Transcript: b" I didn't do anything all day yesterday"
+Confidence: 0.871634840965271
+Transcript: b" so yesterday was fine and well yesterday was a mess cuz you're trying to move all the kids belongings and then all of our paperwork that has to do all of it over there is when the two of them back for kids so so that take all the time you get up the system but it was kind of crazy and then it was going pretty good this morning and the kids were really good"
+Confidence: 0.9361045956611633
+Transcript: b' and then I was going to get a new admin had to get her front from the other unit and for the dark skin hurts all of his kids orders and every kid so I had all these he change Med orders or add new stuff and assignments and stuff so I had to take tomorrow off so about 2:10 after 2 I went over and got her then I need to all the admin paperwork and stuff when is where my morning cuz of that Mom'
+Confidence: 0.9545109868049622
+Transcript: b" where'd you get that thing that I might yeah I mean"
+Confidence: 0.6943955421447754
+Transcript: b' you know more about me has it just her body just like that'
+Confidence: 0.8049755692481995
+Transcript: b" funny he's a reason and she"
+Confidence: 0.7629660367965698
+Transcript: b" Southern little lamb she was so cute like such an old-fashioned name for a little baby doesn't it but she was just adorable though that she was so good the whole time"
+Confidence: 0.924908459186554
+Transcript: b" I haven't went anywhere out in public you guys were waiting to have old I mean years and years ago you just didn't do that"
+Confidence: 0.9338604807853699
+Transcript: b' but you still have to go and do some banking now and then'
+Confidence: 0.784767746925354
+Transcript: b" we'd have plans for tonight going out tonight"
+Confidence: 0.8374651670455933
+Transcript: b" I was called Karen to see if she want to take in a movie or something but I can't work and then I didn't feel that great so I thought well"
+Confidence: 0.9406963586807251
+Transcript: b" well maybe I'll get some of my weekend stuff done"
+Confidence: 0.8319801092147827
+Transcript: b' and I'
+Confidence: 0.6501052975654602
+Transcript: b" and Isis what do you want to have and I still have some spaghetti sauce and some cheese tonight I think there's just enough spaghetti sauce out there I don't know what else I can take so I said well why don't you that recipe is so easy like that over here. The staff is brown some hamburger and I'm using the talk and stuff in spices and it wouldn't have to be out in wide open"
+Confidence: 0.9471989870071411
+Transcript: b" so as I can be going out last night I was like you I like we don't spend that time together together I see you maybe once or twice a week and then I said but you know if you're the guy that so important to you than girls night I must have been girls on Saturday he's like that's fine then like fun is going to be our night then you know I said God forbid there more than two nights a week I said you know a relationship you know like if we see each other we might you know that's not good for a relationship at all I said we should just talk on the phone a couple nights a week he's like yeah it had to be stuck in still that you have the other boys on Friday at 6:40 to go out all of our friends you know have a group of us I suppose we do that on Saturdays and I have no we have not just for the two of us"
+Confidence: 0.965613067150116
+Transcript: b" every night and you know I don't have any money this week so who you going out with tonight"
+Confidence: 0.8473423719406128
+Transcript: b' and then you going out with Justin tomorrow night hopefully'
+Confidence: 0.918813169002533
+Transcript: b' well you are pushing hard for your birthday probably afterwards'
+Confidence: 0.8332832455635071
+Transcript: b" on Monday I mean you'll be in bed by 10. I know and what else do you want for your birthday young lady you want to get in"
+Confidence: 0.8916459679603577
+Transcript: b' hi'
+Confidence: 0.7394134402275085
+Transcript: b" not going to be here I mean dad's going to be gone I'm not going to be here for both of our birthdays"
+Confidence: 0.8913683891296387
+Transcript: b' movies that have a nice dinner sometime during the week for both of our breath cuz I will be here for mine either'
+Confidence: 0.9251189827919006
+Transcript: b' nothing I got to go out'
+Confidence: 0.873174250125885
+Transcript: b' anything more than that'
+Confidence: 0.6091969013214111
+Transcript: b' what are you just going to do hang out watch movies and stuff'
+Confidence: 0.95477694272995
+Transcript: b' what do something really reasonable for dinner'
+Confidence: 0.8259373903274536
+Transcript: b" no but I mean what are you going to do that's inexpensive"
+Confidence: 0.9305533170700073
+Transcript: b' like where'
+Confidence: 0.9010666012763977
+Transcript: b" I didn't want all this for hunting you can have them over for dinner though"
+Confidence: 0.8983016610145569
+Transcript: b' Jason to you how many years has it been from we used to always go on my birthday'
+Confidence: 0.8909802436828613
+Transcript: b" remember that one time of my birthday we went out to dinner just took his checkbook and stuff would you just get me a small glass of there's a big bottle of it down in that bottle rack thing that's already open and I drank out so you can just give me that"
+Confidence: 0.927395761013031
+Transcript: b" wisdom teeth taken out but she called me this afternoon oh I was going to say man I never gave you the wisdom teeth didn't do anything for your voice you just as much as you used to"
+Confidence: 0.8587366938591003
+Transcript: b' any flowers or calling or Cam'
+Confidence: 0.7421283721923828
+Transcript: b' I was asking if we were going to get her for a new office she decorates her home in her office by Chinese'
+Confidence: 0.8873906135559082
+Transcript: b" and that this is really strange because she's Hispanic and and all of her house all the Oriental things and letting Eve is plant plants in her office if I wouldn't want him to take care of them she wouldn't have had any twice what about a nice either still plan or at one of the silk trees that would sit behind her desk then I said that's very soon what you doing therapy and that's a good good idea and then she can hurt real other decorating she can do as she wants and prefers to be the hospital though"
+Confidence: 0.972392737865448
+Transcript: b" you know that the one doctor who lost his wife this summer we have vacation she's going to take over her practice therapy styles are quite similar and"
+Confidence: 0.9518383145332336
+Transcript: b" you know all these patients with since the death was so sudden all these patients were just kind of left on us looks like she's been feeling in quite a bit kind of made her final decision cuz she said that's what you wanted to do in five years have her own practice just put that scary to do the opportunity the patients were there so it was the perfect opportunity to not the best practice"
+Confidence: 0.9216119050979614
+Transcript: b" Rihanna we said she staying with her mom now she has to watch two and then when you're not feeling well you know when Amy just close enough to handle bugging you nosy and see if no one is at the thing they don't get along I mean that well don't listen to me"
+Confidence: 0.914344310760498
+Transcript: b" I'm the nurse that I tell you you do not"
+Confidence: 0.7987738251686096
+Transcript: b' what you think thank you mother'
+Confidence: 0.8504582643508911
+Transcript: b' putting a little kid'
+Confidence: 0.6144222021102905
+Transcript: b" it is one of the kids didn't really have the problem the other day"
+Confidence: 0.8139825463294983
+Transcript: b" he was tracking so well and I swell Isis in the morning then if you track really well let me know and I will I'll get sick I'll save that tracking sheet and give it to you you can have it then you can show your parents he was so excited the next morning I barely walk on the unit and leave you scream"
+Confidence: 0.9315283894538879
+Transcript: b' for good so I was okay with that because I know I did really good'
+Confidence: 0.9198864102363586
+Transcript: b' I know you did too and you can do good today so he did really good today also'
+Confidence: 0.9757617115974426
+Transcript: b' but he was a little kid the other day before his mother came to visit physically working self up into such a state that he threw up 3 times before she came'
+Confidence: 0.8959609270095825
+Transcript: b" decided you didn't want to see her stepmother and he's really excited but he's the he's just such a hyper kidney gets involved in it couldn't believe it"
+Confidence: 0.9075229167938232
+Transcript: b' your what your homework and stuff to do tomorrow'
+Confidence: 0.8729584813117981
+Transcript: b" well that would be good and I are out of here to do it student teaching my observation totally different you know I have 5 students coming use the names you're just having these weirdos come in to observe your school you know and to finally. I wasn't in yet so I going Tuesday to meet him what they told me"
+Confidence: 0.920851469039917
+Transcript: b' Do You observe different teachers or one teacher I can pick you guys all we have to do English now'
+Confidence: 0.9359803199768066
+Transcript: b" but but it's all that you can do just being there an hour a week or two hours a week so it says you can't this time they told Nikki and I think I'm going to be in late today should I don't care you just you just come and go as you please I don't care cuz you know we include her in things and then making me feel like I don't care"
+Confidence: 0.9174385666847229
+Transcript: b' what is pretty cheap there'
+Confidence: 0.8058382868766785
+Transcript: b" that's not what that kid in the paper who who's in the coma he was at the star baseball player at BK and get that scholarship to he's going to get her a player of the year 2 years ago and was in the hospital and they're all going to go to game today because sports are very important this family know they always to go watch the older brother play baseball Matt said he would want is there something to be at the game and the coach said it's fine if you don't want to if you've got to go out of a play you just do whatever but it was like the field is dedicated to a dedicated senior year did it is Dad memory of his dad cuz he was a star player"
+Confidence: 0.95176762342453
+Transcript: b" no cuz I usually lose the cutest who's going to pay yet but we like beat every year for like 17 years and I think our senior year"
+Confidence: 0.9034969210624695
+Transcript: b' whenever I can never you tell you have to be'
+Confidence: 0.5379105806350708
+Transcript: b' none of the ones that matter'
+Confidence: 0.7751075625419617
+Transcript: b' baby games'
+Confidence: 0.747377872467041
+Transcript: b" Wednesday though they're 2 and 5 and 291 last two games."
+Confidence: 0.7648785710334778
+Transcript: b" Football field from BSU the lights were on for the seniors play The Varsity has games Thursday and Friday the most schools don't have that you can play at in Boise at 7 on Wednesdays but Varsity starts at 7"
+Confidence: 0.9322945475578308
+Transcript: b' a whole lot of it and I know Dad said and I thought maybe that was you going to get off work right at 5 and go to work at 5:07'
+Confidence: 0.8598927855491638
+Transcript: b" because I give it a day with her leg when they were freaking out about it was freaky I need some more sleep and know she's home sick today and I'm like what kind of mother are you use the same house I mean"
+Confidence: 0.8957356810569763
+Transcript: b" but they're still kind of sore like 80 cuz I can walk and everything there"
+Confidence: 0.8286212086677551
+Transcript: b" is it humid outside anything else like that I think that's part of that can be stick to not eat"
+Confidence: 0.8444883227348328
+Transcript: b" I've made up for everything that I had to go to the store and get the punch and caps and stuff for the open house and I mean everything went good at the store and she was 6 or nothing but good and I went to go get the oil for the fans will you go to the grocery store I was hungry there cuz everything look good so hundred dollars"
+Confidence: 0.9428454637527466
+Transcript: b' how do you stuff from the dad yeah'
+Confidence: 0.683215320110321

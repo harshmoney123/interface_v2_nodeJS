@@ -3,14 +3,30 @@
   
   client.on('open', function() {
     window.Stream = client.createStream();
+
+    client.on('stream', function(stream, meta){    ;
+      stream.on('data', function(data){
+        console.log("Received response from the server.");
+        console.log(data);
+        try {
+          if(data.company === "Google"){
+            $("#nav-google").html(data.data);
+          }else if(data.company === "AWS"){
+            $("#nav-amazon").html(data.data);
+          }
+        } catch(error) {
+            alert(error);
+        }
+      });
+    });
     
     if (!navigator.getUserMedia)
           navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     
     
     navigator.getUserMedia({audio: true}, initializeRecorder,function(e) {
-            alert('Error capturing audio.');
-          });
+      alert('Error capturing audio.');
+    });
     
     var recording = false;
     
@@ -64,30 +80,43 @@
       stopRecord.disabled = true;
       recording = false;
       window.Stream.end();
-      client.send({msg: "newAudio", type: "common"});
     }
   });
 
-  client.on('message', function (messageEvent) {
+$("#nav-amazon-tab").on("click", function(){
+  $(this).addClass('active');
+  $("#nav-google-tab").removeClass('active');
+  $("#nav-ibm-tab").removeClass('active');
+  $("#nav-amazon").addClass('show');
+  $("#nav-google").removeClass('show');
+  $("#nav-ibm").removeClass('show');
+  $("#nav-amazon").addClass('active');
+  $("#nav-google").removeClass('active');
+  $("#nav-ibm").removeClass('active');
 
-    console.log("Received response from the server.");
+})
 
-    var massage = JSON.parse(messageEvent.data);
-    var type = massage.type;
-    
-    if (massage.error) {
-        alert(massage.result);
-    } else if(type === "error"){
-      // TODO: Tell user transcription failed.
-      console.log("transcription failed");
-    } else if (type === "transcription") {
-        $("#nav-amazon").html(massage.result["Amazon"]);
-        $("#nav-google").html(massage.result["Google"]);
-    // If the response is from anything else, it's currently unsupported
-    } else {
-        alert("Wrong msg type: " + type);
-    }
-  });
+$("#nav-google-tab").on("click", function(){
+  $(this).addClass('active');
+  $("#nav-amazon-tab").removeClass('active');
+  $("#nav-ibm-tab").removeClass('active');
+  $("#nav-google").addClass('show');
+  $("#nav-amazon").removeClass('show');
+  $("#nav-ibm").removeClass('show');
+  $("#nav-google").addClass('active');
+  $("#nav-amazon").removeClass('active');
+  $("#nav-ibm").removeClass('active');
+})
 
-
+$("#nav-ibm-tab").on("click", function(){
+  $(this).addClass('active');
+  $("#nav-amazon-tab").removeClass('active');
+  $("#nav-google-tab").removeClass('active');
+  $("#nav-amazon").removeClass('active');
+  $("#nav-google").removeClass('active');
+  $("#nav-ibm").addClass('active');
+  $("#nav-amazon").removeClass('show');
+  $("#nav-google").removeClass('show');
+  $("#nav-ibm").addClass('show');
+})
 })(this);

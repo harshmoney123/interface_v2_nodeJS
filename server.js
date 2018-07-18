@@ -4,7 +4,8 @@ var express = require("express"),
     wav = require('wav'),
     fs = require('fs'),
     outFile = 'speech.wav',
-    spawn = require("child_process").spawn;
+    spawn = require("child_process").spawn,
+    fs = require('fs');
     
     
 app.set("view engine", "ejs");
@@ -32,69 +33,45 @@ server.on('connection', function(client) {
 
   client.on('stream', function(stream, meta) {
     console.log('new stream');
-    stream.pipe(fileWriter);
+    stream.pipe(fileWriter); 
 
-    // stream.on('end', function() {
-    //   fileWriter.end();
-    //   console.log('wrote to file ' + outFile);
-    // });
-  });
+    stream.on('end', function() {
+      fileWriter.end();
+      console.log('wrote to file ' + outFile);
+      try {
+        //Execute python functions
+        // pythonProcess = spawn('python3',['SpeechToText.py', 'speech.wav']);
 
-  server.on('message', function(messageEvent) {
-    console.log("Received message from the server.");
+        // pythonProcess.stdout.on('data', (data) => {
+        //   console.log(`stdout: ${data}`);
+        // });
 
-    var massage = JSON.parse(messageEvent.data);
-    var type = massage.type;
-    if(massage.error){
-      alert(massage.result);
-    }else if(type === "common"){
-      if(massage.msg === "newAudio"){
-        console.log("new audio arrived");
+        // pythonProcess.on('close', (code) => {
+        //   console.log(`child process exited with code ${code}`);
+        // });
 
-        try {
-          // Execute python functions
-          // pythonProcess = spawn('python3',['SpeechToText.py', 'speech.wav']);
-
-          // pythonProcess.stdout.on('data', (data) => {
-          //   console.log(`stdout: ${data}`);
-          // });
-
-          // pythonProcess.on('close', (code) => {
-          //   console.log(`child process exited with code ${code}`);
-          // });
-
-          var google_text = getTextFromFile("Google");
-          var amazon_text = getTextFromFile("AWS");
-          var result = {"Amazon": amazon_text, "Google": google_text};
-          server.send({msg: result, type: "transcription"});
+        function getTextFromFile(company){
+            var path = "speech" + company + ".txt";
+            fs.readFile(path, 'utf8', function (err,data) {
+              if (err) {
+                console.log(err);
+              }
+              console.log("send transcription of" + company);
+              client.send({company: company, data: data});
+            });
         }
-        catch(error) {
-          console.log(error);
-          server.send({msg: "Error when transcribe.", type: "error"});
-        }
-      }else{
-        console.log("wrong msg content: " + massage.msg);
+        getTextFromFile("Google");
+        getTextFromFile("AWS");
       }
-
-    }else{
-      console.log("wrong msg type: " + type);
-    }
+      catch(error) {
+        console.log(error);
+        // client.send({msg: "Error when transcribe.", type: "error"});
+      }
+    });
   });
 });
 
 
 
-function getTextFromFile(company){
-    var path = "speech" + "company" + ".txt";
-    var file = new File(path);
-    file.open("r"); // open file with read access
-    var str = "";
-    while (!file.eof) {
-      // read each line of text
-      str += file.readln() + "\n";
-    }
-    file.close();
-    return str;
-}
 
 

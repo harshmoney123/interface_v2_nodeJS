@@ -22,6 +22,8 @@
     "child_process": "^1.0.2",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
+    "filereader": "^0.10.3",
+    "fs": "0.0.1-security",
     "wav": "^1.0.2"
   }
 }

@@ -6,4 +6,4 @@
 
 - click record and then click stop
 
-- you kan see there is another "new stream" printed, which causes error
+- you can see there is another "new stream" printed, which causes error

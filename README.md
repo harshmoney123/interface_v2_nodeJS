@@ -1,13 +1,15 @@
 # interface_v2_nodeJS
 
-- Change the credantials in SpeechToText.py
+- Change the credantials (Google) and access keys (Amazon)in SpeechToText.py
 
-- run server.js (need to install NodeJS first)
+- run 'python3 SpeechToText.py speech' first to make sure it works fine
+
+- run 'node server.js' (need to install NodeJS first)
 
 - go to `http://localhost:3700` in the browser
 
-- click record and then click stop
+- click record, say something and then click stop
 
-- you can see the content in text files
+- wait for a while
 
-- Problem in SpeechToText.py, fuc*** Amazon! Google good!
+- you can see the content in the tabs

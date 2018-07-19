@@ -4,7 +4,7 @@ var express = require("express"),
     wav = require('wav'),
     fs = require('fs'),
     outFile = 'speech.wav',
-    spawn = require("child_process").spawn,
+    spawn = require("child_process"),
     fs = require('fs');
     
     
@@ -40,13 +40,13 @@ server.on('connection', function(client) {
       console.log('wrote to file ' + outFile);
       try {
         //Execute python functions
-        // pythonProcess = spawn('python3',['SpeechToText.py', 'speech.wav']);
+        pythonProcess = spawn.spawnSync('python3',['SpeechToText.py', 'speech.wav']);
 
-        // pythonProcess.stdout.on('data', (data) => {
+        // process.stdout.on('data', (data) => {
         //   console.log(`stdout: ${data}`);
         // });
 
-        // pythonProcess.on('close', (code) => {
+        // process.on('close', (code) => {
         //   console.log(`child process exited with code ${code}`);
         // });
 

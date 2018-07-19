@@ -5,48 +5,26 @@
     }
 
 body {
-	font-family: "Gotham Light";
+	font-family: 'Cabin', sans-serif;
 	background-color: #e6ebef;
-	/*background: -webkit-linear-gradient(to bottom, #5a8ac1, white) fixed;  /* Chrome 10-25, Safari 5.1-6 */
-	/*background: linear-gradient(to bottom,  #5a8ac1, white) fixed; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	/* color: #666; */
-	/*padding: 1% 3%; */
 	width: 100%;
 	height: 100%;
 	overflow-x: hidden;
 }
 
-header {
-	/*padding: 50px 20px;*/
-	background: #1b3247;  /* fallback for old browsers */
-	/* background: -webkit-linear-gradient(to left, #ffc500, #c21500);  /* Chrome 10-25, Safari 5.1-6 */
-	/* background: linear-gradient(to left, #ffc500, #c21500); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	color: #e6ebef;
-	border-style: solid;
-	border-color: #1b3247; 
-
-	/*border-style: dotted;
-	border-color: red;*/
+.navbar {
+	background: #1b3247;
+	text-decoration-color: white;
 }
 
 h1 {
 	font-size: 45px;
 	text-align: left;
 	padding: 0 2%; 
-
-	/*border-style: dotted;
-	border-color: red; */
-
 } 
 
 .toggleServices, .tab-content {
 	padding-left: 3%;
-
-
-
-
-	/*border-style: dotted;
-	border-color: red;*/
 }
 
 
@@ -56,10 +34,7 @@ h1 {
 	text-align: center;
 	padding: 6px 0;
 	font-size: 12px;
-	/* line-height: 1.428571429; */
 	border-radius: 30px;
-	/*border-style: solid;
-	border-color: green;*/
 }
 
 
@@ -69,7 +44,6 @@ h1 {
 	width: 40%;
 	padding: 1% 10%;
 	padding-top: 3%;
-	/*box-align: left;*/
 	float: left;
 } 
 
@@ -89,21 +63,29 @@ button {
 	color: #119da4;
 }
 
-
 .transcript {
 	width: 58%;
 	float: right;
 	padding-top: 1%;
 }
 
-#nav-tab:focus { /*not working------ONLY ACTIVE WORKS- FOCUS WILL NOT WORK, ALSO THE SAME SITUATION FOR BUTTONS*/
-	background-color: #119da4;
+.tab-content {
+	padding: 20px;
+}
+
+h3 {
+	height: 80px;
+	margin: 300px auto;
+	padding-top: 25px;
+	text-align: center;
+	background-color: rgba(255,200,200,0.3);
+	color: rgb(150, 150, 150);
+	visibility: hidden;
 }
 
 
 footer {
 	position: fixed;
-	/*left: 0; */
     bottom: 0; 
     width: 100%;
     background-color: #1b3247;

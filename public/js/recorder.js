@@ -7,6 +7,7 @@
     client.on('stream', function(stream, meta){    ;
       stream.on('data', function(data){
         console.log("Received response from the server.");
+        $("h3").css("visibility", "hidden");
         console.log(data);
         try {
           if(data.company === "Google"){
@@ -80,9 +81,11 @@
       stopRecord.disabled = true;
       recording = false;
       window.Stream.end();
+      $("h3").css("visibility", "visible");
     }
   });
 
+// ======================================================================================
 $("#nav-amazon-tab").on("click", function(){
   $(this).addClass('active');
   $("#nav-google-tab").removeClass('active');

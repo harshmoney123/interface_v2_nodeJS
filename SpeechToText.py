@@ -6,7 +6,6 @@ import sys
 #from __future__ import print_function
 import time
 import boto3
-import boto.s3
 from boto.s3.key import Key
 import requests
 import threading
@@ -92,12 +91,14 @@ class SttIntegrated:
 
     def amazon_stt(self):
 
-        # k = Key('celerfama')
-        # s3 = boto3.client('s3', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA', aws_secret_access_key='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')
-        # s3.upload_file(self.inputFilePath , 'celerfama', k)
+        k = Key('celerfama')
+        s3 = boto3.resource('s3',aws_access_key_id='AKIAIL5TEFWESGAOIK3Q', aws_secret_access_key='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')
+        # client = s3.client('s3', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA', aws_secret_access_key='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')
+        bucket = s3.Bucket(self.s3_bucket_name)
+        bucket.upload_file(self.inputFilePath , self.inputFilePath)
 
-        transcribe = boto3.client('transcribe', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA',
-                                  aws_secret_access_key='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',
+        transcribe = boto3.client('transcribe', aws_access_key_id='AKIAIL5TEFWESGAOIK3Q',
+                                  aws_secret_access_key='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',
                                   region_name='us-east-2')
         ticks = str(time.time())
         job_name = "Transcribing" + self.inputFilePath + ticks

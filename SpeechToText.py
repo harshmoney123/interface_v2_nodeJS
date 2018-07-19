@@ -26,7 +26,7 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/wangruohan/Documents/nlp/88cb41572f69.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/sallykwok/Desktop/interface_v2_nodeJS/88cb41572f69.json"
 
         # fix as necessary
         self.s3_region = "us-east-2"
@@ -91,15 +91,18 @@ class SttIntegrated:
 
     def amazon_stt(self):
 
-        k = Key('celerfama')
-        s3 = boto3.resource('s3',aws_access_key_id='AKIAIL5TEFWESGAOIK3Q', aws_secret_access_key='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')
-        # client = s3.client('s3', aws_access_key_id='AKIAIMJ3OA53TB2T6EZA', aws_secret_access_key='V67MqdW/a4WZYxp8Jz5KaFX+azzFatY8Jpn6gEXn')
+        aws_access_key_id = 'FILL IN YOUR OWN'
+        aws_secret_access_key = 'FILL IN YOUR OWN'
+        region_name = 'FILL IN YOUR OWN'
+
+        s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+       
         bucket = s3.Bucket(self.s3_bucket_name)
         bucket.upload_file(self.inputFilePath , self.inputFilePath)
 
-        transcribe = boto3.client('transcribe', aws_access_key_id='AKIAIL5TEFWESGAOIK3Q',
-                                  aws_secret_access_key='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',
-                                  region_name='us-east-2')
+        transcribe = boto3.client('transcribe', aws_access_key_id=aws_access_key_id,
+                                  aws_secret_access_key=aws_secret_access_key,
+                                  region_name=region_name)
         ticks = str(time.time())
         job_name = "Transcribing" + self.inputFilePath + ticks
         job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/" + self.inputFilePath

@@ -26,7 +26,7 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/sallykwok/Desktop/interface_v2_nodeJS/88cb41572f69.json"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ADD PATHFILE TO GOOGLE CREDENTIALS JSON FILE"
 
         # fix as necessary
         self.s3_region = "us-east-2"

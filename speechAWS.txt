@@ -1,1 +1,0 @@
-{"jobName":"Transcribingspeech.wav1532104624.333738","accountId":"689545688721","results":{"transcripts":[{"transcript":"Four."}],"items":[{"start_time":"0.740","end_time":"1.120","alternatives":[{"confidence":"0.8677","content":"Four"}],"type":"pronunciation"},{"alternatives":[{"content":"."}],"type":"punctuation"}]},"status":"COMPLETED"}

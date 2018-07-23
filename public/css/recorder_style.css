@@ -92,3 +92,9 @@ footer {
     color: #e6ebef;
 	text-align: center;
 }
+
+.landimg {
+	width: 60%;
+	display: block;
+	margin: 40px auto;
+}

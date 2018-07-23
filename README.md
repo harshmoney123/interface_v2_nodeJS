@@ -1,13 +1,23 @@
 # interface_v2_nodeJS
 
-- Change the credantials in SpeechToText.py
+- * Need to install mongodb or not?
 
-- run server.js (need to install NodeJS first)
+- Change the credantials (Google) and access keys (Amazon)in SpeechToText.py
+
+- run 'python3 SpeechToText.py speech' first to make sure it works fine
+
+- run 'node server.js' (need to install NodeJS first)
 
 - go to `http://localhost:3700` in the browser
 
-- click record and then click stop
+- click "Log In" on the top right
 
-- you can see the content in text files
+- Enter your name. ("Cathy", "Sally" are recommended because they are already in the database)
 
-- Problem in SpeechToText.py, fuc*** Amazon! Google good!
+- click the button to go to the record page
+
+- click the play button, say something and then click stop
+
+- wait for a while
+
+- you can see the content in the tabs

@@ -1,0 +1,18 @@
+<%- include partials/header %>
+
+<div class="container">
+
+<h1 style="margin-bottom: 40px">Welcome Back, <%= person.name%></h1>
+	<div style="width: 20%">
+		<a href="/record">
+			<button class="btn btn-lg btn-primary btn-block">Record a conversation</button>
+		</a>
+	</div>
+
+	<h4 style="background: yellow">Last Transcription:</h4>
+
+	<p><%= person.transcription %></p>
+	<p style="color: gray"><%= person.date + "-" + person.time %></p>
+</div>
+
+<% include partials/footer %>

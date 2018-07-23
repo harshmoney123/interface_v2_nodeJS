@@ -1,2 +1,0 @@
-Transcript: b'current application for residency'
-Confidence: 0.8299275636672974

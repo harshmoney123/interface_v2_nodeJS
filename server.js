@@ -26,6 +26,7 @@ var MySchema = new mongoose.Schema({
     date: String
 });
 var Doctor = mongoose.model("Doctor", MySchema);
+<<<<<<< HEAD
 // var Patient = mongoose.model("Patient", MySchema);
 
 function addTranscriptionToDB(transcription){
@@ -46,6 +47,25 @@ function addTranscriptionToDB(transcription){
     }
   });
 }
+=======
+var Patient = mongoose.model("Patient", MySchema);
+
+var person = new Patient({
+    name: "Emily",
+    password: "12345",
+    transcription: "...",
+    date: "08/04/2018",
+    time: "14:00"
+});
+person.save(function(err, per){
+    if(err){
+        console.log("something wrong")
+    }else{
+        console.log("we just saved a cat to the db:")
+        console.log(per);
+    }
+});
+>>>>>>> 219d13a1b60d4bc79a23d89044402c1f0cc56352
 
 app.get("/", function(req, res){
   res.render("landing");

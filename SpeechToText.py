@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#COMMAND F and search for "FILL WITH YOU OWN" and fill in variables with your respective password and paths
+
 import os
 import sys
 #from __future__ import print_function
@@ -26,11 +28,11 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/sallykwok/Desktop/interface_v2_nodeJS/88cb41572f69.json'
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL WITH YOU OWN'
 
         # fix as necessary
-        self.s3_region = "us-east-2"
-        self.s3_bucket_name = "celerfama"
+        self.s3_region = "FILL WITH YOU OWN"
+        self.s3_bucket_name = "FILL WITH YOU OWN"
 
     def google_stt(self):
         # Instantiates a client
@@ -91,15 +93,17 @@ class SttIntegrated:
 
     def amazon_stt(self):
 
-        aws_access_key_id = 'AKIAJQAASOJA4WXDBDHQ'
-        aws_secret_access_key = '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'
-        region_name = 'us-east-2'
+        #Amazon Web Service information
+        aws_access_key_id = 'FILL WITH YOU OWN'
+        aws_secret_access_key = 'FILL WITH YOU OWN'
+        region_name = 'FILL WITH YOU OWN'
 
+        #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
-       
         bucket = s3.Bucket(self.s3_bucket_name)
         bucket.upload_file(self.inputFilePath , self.inputFilePath)
 
+        #Using Amazon Transcription Services
         transcribe = boto3.client('transcribe', aws_access_key_id=aws_access_key_id,
                                   aws_secret_access_key=aws_secret_access_key,
                                   region_name=region_name)
@@ -113,14 +117,14 @@ class SttIntegrated:
             LanguageCode='en-US'
         )
         print("Amazon:Transcribing " + self.inputFilePath)
-
+        #Returns status on transcription job
         while True:
             status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
             if status['TranscriptionJob']['TranscriptionJobStatus'] in ['COMPLETED', 'FAILED']:
                 break
             print("Amazon:  Waiting for operation to complete...")
             time.sleep(10)
-        #print(status)
+        #print(status)  <--can uncomment
 
         link = status.get('TranscriptionJob').get('Transcript').get('TranscriptFileUri')
         # Writes the transcript to a file

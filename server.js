@@ -14,31 +14,38 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 mongoose.connect("mongodb://localhost:27017/transcriptionDB",{useNewUrlParser:true});
 
+
+
+var user = {username: "", password: ""};
+
 var MySchema = new mongoose.Schema({
     name: String,
     password: String,
     transcription: String,
-    date: String,
-    time: String
+    patient: String,
+    date: String
 });
 var Doctor = mongoose.model("Doctor", MySchema);
-var Patient = mongoose.model("Patient", MySchema);
+// var Patient = mongoose.model("Patient", MySchema);
 
-// var person = new Doctor({
-//     name: "xxx",
-//     password: "12345",
-//     transcription: "...",
-//     date: "08/04/2018",
-//     time: "14:00"
-// });
-// person.save(function(err, per){
-//     if(err){
-//         console.log("something wrong")
-//     }else{
-//         console.log("we just saved a cat to the db:")
-//         console.log(per);
-//     }
-// });
+function addTranscriptionToDB(transcription){
+  var time = new Date();
+  var person = new Doctor({
+    name: user.username,
+    password: user.password,
+    patient: "My patient",
+    transcription: transcription,
+    date: time.toString()
+  });
+  person.save(function(err, per){
+    if(err){
+        console.log("something wrong")
+    }else{
+        console.log("we just saved a transcription to the db:")
+        console.log(per);
+    }
+  });
+}
 
 app.get("/", function(req, res){
   res.render("landing");
@@ -48,18 +55,18 @@ app.get("/record", function(req, res){
     res.render("client");
 });
 
-var username = "Please login";
 app.get("/profile", function(req, res){
   res.render("profile", {username: username});
 });
 
 app.post("/profile", function(req, res){
-  var username = req.body.username;
-  Patient.find({name: username}, function(err, person){
+  user.username = req.body.username;
+  user.password = req.body.password;
+  Doctor.find({name: user.username, password: user.password}, function(err, person){
       if(err){
+          alert("User does not exist!");
           console.log(err);
       }else{
-          // console.log(person[0]);
           res.render("profile", {person: person[0]});
       }
   });
@@ -96,14 +103,6 @@ server.on('connection', function(client) {
         //Execute python functions
         pythonProcess = spawn.spawnSync('python3',['SpeechToText.py', 'speech.wav']);
 
-        // process.stdout.on('data', (data) => {
-        //   console.log(`stdout: ${data}`);
-        // });
-
-        // process.on('close', (code) => {
-        //   console.log(`child process exited with code ${code}`);
-        // });
-
         function getTextFromFile(company){
             var path = "speech" + company + ".txt";
             fs.readFile(path, 'utf8', function (err,data) {
@@ -112,6 +111,7 @@ server.on('connection', function(client) {
               }
               console.log("send transcription of" + company);
               client.send({company: company, data: data});
+              if(company === "Google") addTranscriptionToDB(data);
             });
         }
         getTextFromFile("Google");

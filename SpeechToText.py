@@ -139,10 +139,10 @@ class SttIntegrated:
         url = 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
 
           # bluemix authentication username
-        username = '17e82caf-c5d5-4434-a602-5f78b1fabad5'
+        username = 'FILL WITH YOUR OWN'
 
          # bluemix authentication password
-        password = 'TIegCWGVhoFp'
+        password = 'FILL WITH YOUR OWN'
 
         headers = {'Content-Type': 'audio/wav'}
 

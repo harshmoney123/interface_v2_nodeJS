@@ -26,7 +26,7 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "ADD PATHFILE TO GOOGLE CREDENTIALS JSON FILE"
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/sallykwok/Desktop/interface_v2_nodeJS/88cb41572f69.json'
 
         # fix as necessary
         self.s3_region = "us-east-2"
@@ -91,9 +91,9 @@ class SttIntegrated:
 
     def amazon_stt(self):
 
-        aws_access_key_id = 'FILL IN YOUR OWN'
-        aws_secret_access_key = 'FILL IN YOUR OWN'
-        region_name = 'FILL IN YOUR OWN'
+        aws_access_key_id = 'AKIAJQAASOJA4WXDBDHQ'
+        aws_secret_access_key = 'uImF94Dg27E9Mr16Wri4gPwhpgE8VNsvCdpYzA3L'
+        region_name = 'us-east-2'
 
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
        

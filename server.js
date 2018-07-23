@@ -24,21 +24,21 @@ var MySchema = new mongoose.Schema({
 var Doctor = mongoose.model("Doctor", MySchema);
 var Patient = mongoose.model("Patient", MySchema);
 
-// var person = new Doctor({
-//     name: "xxx",
-//     password: "12345",
-//     transcription: "...",
-//     date: "08/04/2018",
-//     time: "14:00"
-// });
-// person.save(function(err, per){
-//     if(err){
-//         console.log("something wrong")
-//     }else{
-//         console.log("we just saved a cat to the db:")
-//         console.log(per);
-//     }
-// });
+var person = new Patient({
+    name: "Emily",
+    password: "12345",
+    transcription: "...",
+    date: "08/04/2018",
+    time: "14:00"
+});
+person.save(function(err, per){
+    if(err){
+        console.log("something wrong")
+    }else{
+        console.log("we just saved a cat to the db:")
+        console.log(per);
+    }
+});
 
 app.get("/", function(req, res){
   res.render("landing");

@@ -11,9 +11,9 @@
         console.log(data);
         try {
           if(data.company === "Google"){
-            $("#nav-google").html(data.data);
+            $("#google-navtab").html(data.data);
           }else if(data.company === "AWS"){
-            $("#nav-amazon").html(data.data);
+            $("#amazon-navtab").html(data.data);
           }
         } catch(error) {
             alert(error);
@@ -86,40 +86,12 @@
   });
 
 // ======================================================================================
-$("#nav-amazon-tab").on("click", function(){
-  $(this).addClass('active');
-  $("#nav-google-tab").removeClass('active');
-  $("#nav-ibm-tab").removeClass('active');
-  $("#nav-amazon").addClass('show');
-  $("#nav-google").removeClass('show');
-  $("#nav-ibm").removeClass('show');
-  $("#nav-amazon").addClass('active');
-  $("#nav-google").removeClass('active');
-  $("#nav-ibm").removeClass('active');
 
-})
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+});
 
-$("#nav-google-tab").on("click", function(){
-  $(this).addClass('active');
-  $("#nav-amazon-tab").removeClass('active');
-  $("#nav-ibm-tab").removeClass('active');
-  $("#nav-google").addClass('show');
-  $("#nav-amazon").removeClass('show');
-  $("#nav-ibm").removeClass('show');
-  $("#nav-google").addClass('active');
-  $("#nav-amazon").removeClass('active');
-  $("#nav-ibm").removeClass('active');
-})
 
-$("#nav-ibm-tab").on("click", function(){
-  $(this).addClass('active');
-  $("#nav-amazon-tab").removeClass('active');
-  $("#nav-google-tab").removeClass('active');
-  $("#nav-amazon").removeClass('active');
-  $("#nav-google").removeClass('active');
-  $("#nav-ibm").addClass('active');
-  $("#nav-amazon").removeClass('show');
-  $("#nav-google").removeClass('show');
-  $("#nav-ibm").addClass('show');
-})
 })(this);

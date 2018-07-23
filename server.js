@@ -130,6 +130,7 @@ server.on('connection', function(client) {
         }
         getTextFromFile("Google");
         getTextFromFile("AWS");
+        getTextFromFile("IBM");
       }
       catch(error) {
         console.log(error);

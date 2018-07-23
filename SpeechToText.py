@@ -28,7 +28,7 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL IN YOUR OWN'
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/emilyzhao/Downloads/88cb41572f69.json'
 
         # fix as necessary
         self.s3_region = "FILL IN YOUR OWN"
@@ -134,13 +134,39 @@ class SttIntegrated:
         print("Amazon: Transcription complete.")
         return
 
+    def ibm_stt(self):
+        # IBM bluemix API url
+        url = 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+
+          # bluemix authentication username
+        username = '17e82caf-c5d5-4434-a602-5f78b1fabad5'
+
+         # bluemix authentication password
+        password = 'TIegCWGVhoFp'
+
+        headers = {'Content-Type': 'audio/wav'}
+
+         # Open audio file(.wav) in wave format
+        audio = open(self.inputFilePath, 'rb')
+
+        r = requests.post(url, data=audio, headers=headers, auth=(username, password))
+
+         # create the json file out of
+        file_name = self.inputFilePath[:-4]
+        with open(file_name + "IBM" + ".txt", 'w') as f:
+            sys.stdout = f
+            print(r.text)
+
     def main(self):
-        google = threading.Thread(name='googleSTT', target= self.google_stt )
-        amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
+        google = threading.Thread(name='googleSTT', target= self.google_stt)
+        #amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
+        ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
         google.start()
-        amazon.start()
+        #amazon.start()
+        ibm.start()
         google.join()
-        amazon.join()
+        #amazon.join()
+        ibm.join()
         #return "speech to text finished"
 
 # to run it from console like a simple script use

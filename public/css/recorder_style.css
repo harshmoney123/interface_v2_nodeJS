@@ -39,12 +39,23 @@ h1 {
 
 
 .btn-group-justified {
-	display: flex;
+	display: flex; 
+	/*display: inline-block; */
     justify-content: space-between;
 	width: 40%;
-	padding: 1% 10%;
-	padding-top: 3%;
+	padding: 1% 10%; 
+	/*padding-top: 3%; */
+
+
+	/* position: relative;
+	top: 15%;
+	right: 50%; */
 	float: left;
+
+
+
+	/*border-style: dotted;
+	border-color: red; */
 } 
 
 
@@ -69,9 +80,9 @@ button {
 	padding-top: 1%;
 }
 
-.tab-content {
-	padding: 20px;
-}
+ .tab-content {
+	padding: 10px;
+} 
 
 h3 {
 	height: 80px;
@@ -82,7 +93,6 @@ h3 {
 	color: rgb(150, 150, 150);
 	visibility: hidden;
 }
-
 
 footer {
 	position: fixed;
@@ -98,3 +108,26 @@ footer {
 	display: block;
 	margin: 40px auto;
 }
+
+
+
+#identify-patient {
+	float: left;
+	width: 40%;
+
+	/*border-style: dotted;
+	border-color: blue;*/
+}
+
+#navbar-and-transcript {
+	float: left;
+	width: 60%;
+	display: inline-block;
+
+	/*border-style: dotted;
+	border-color: red;*/
+}
+
+
+
+

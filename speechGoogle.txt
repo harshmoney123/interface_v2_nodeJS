@@ -1,0 +1,2 @@
+Transcript: b'auto-return age restriction thank you'
+Confidence: 0.7390890121459961

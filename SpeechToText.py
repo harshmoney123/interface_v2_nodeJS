@@ -28,11 +28,11 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL WITH YOU OWN'
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL IN YOUR OWN'
 
         # fix as necessary
-        self.s3_region = "FILL WITH YOU OWN"
-        self.s3_bucket_name = "FILL WITH YOU OWN"
+        self.s3_region = "FILL IN YOUR OWN"
+        self.s3_bucket_name = "FILL IN YOUR OWN"
 
     def google_stt(self):
         # Instantiates a client
@@ -94,9 +94,9 @@ class SttIntegrated:
     def amazon_stt(self):
 
         #Amazon Web Service information
-        aws_access_key_id = 'FILL WITH YOU OWN'
-        aws_secret_access_key = 'FILL WITH YOU OWN'
-        region_name = 'FILL WITH YOU OWN'
+        aws_access_key_id = 'FILL IN YOUR OWN'
+        aws_secret_access_key = 'FILL IN YOUR OWN'
+        region_name = 'FILL IN YOUR OWN'
 
         #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)

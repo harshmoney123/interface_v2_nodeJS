@@ -83,10 +83,12 @@
       window.Stream.end();
       $("h3").css("visibility", "visible");
     }
+    
   });
 
 // ======================================================================================
 
+//Toggling between tabs: When tab is clicked, the associated content is displayed
 $(document).ready(function(){
     $(".nav-tabs a").click(function(){
         $(this).tab('show');

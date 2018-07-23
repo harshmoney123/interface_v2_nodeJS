@@ -26,8 +26,6 @@ var MySchema = new mongoose.Schema({
     date: String
 });
 var Doctor = mongoose.model("Doctor", MySchema);
-<<<<<<< HEAD
-// var Patient = mongoose.model("Patient", MySchema);
 
 function addTranscriptionToDB(transcription){
   var time = new Date();
@@ -47,25 +45,9 @@ function addTranscriptionToDB(transcription){
     }
   });
 }
-=======
+
 var Patient = mongoose.model("Patient", MySchema);
 
-var person = new Patient({
-    name: "Emily",
-    password: "12345",
-    transcription: "...",
-    date: "08/04/2018",
-    time: "14:00"
-});
-person.save(function(err, per){
-    if(err){
-        console.log("something wrong")
-    }else{
-        console.log("we just saved a cat to the db:")
-        console.log(per);
-    }
-});
->>>>>>> 219d13a1b60d4bc79a23d89044402c1f0cc56352
 
 app.get("/", function(req, res){
   res.render("landing");
@@ -84,8 +66,9 @@ app.post("/profile", function(req, res){
   user.password = req.body.password;
   Doctor.find({name: user.username, password: user.password}, function(err, person){
       if(err){
-          alert("User does not exist!");
           console.log(err);
+      }else if(person.length == 0) {
+          res.render("login", {found: false});
       }else{
           res.render("profile", {person: person[0]});
       }
@@ -93,8 +76,19 @@ app.post("/profile", function(req, res){
 });
 
 app.get("/login", function(req, res){
-  res.render("login");
+  res.render("login", {found: true});
 });
+
+app.post("/login", function(req, res) {
+  user.username = req.body.username;
+  user.password = req.body.password;
+  addTranscriptionToDB("I just created an account.");
+  res.render("login", {found: true})
+})
+
+app.get("/signup", function(req, res) {
+  res.render("signup");
+})
 
 app.listen(3700, function(){
   console.log("server is listening......");

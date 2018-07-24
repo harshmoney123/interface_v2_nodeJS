@@ -15,14 +15,15 @@ app.use(express.static(__dirname + '/public'));
 mongoose.connect("mongodb://localhost:27017/transcriptionDB",{useNewUrlParser:true});
 
 
-
 var user = {username: "", password: ""};
+var patientID = {patientName: "", patientDOB: ""};
 
 var MySchema = new mongoose.Schema({
     name: String,
     password: String,
     transcription: String,
     patient: String,
+    birthday: String,
     date: String
 });
 var Doctor = mongoose.model("Doctor", MySchema);
@@ -32,7 +33,8 @@ function addTranscriptionToDB(transcription){
   var person = new Doctor({
     name: user.username,
     password: user.password,
-    patient: "My patient",
+    patient: patientID.patientName,
+    birthday: patientID.patientDOB,
     transcription: transcription,
     date: time.toString()
   });
@@ -60,6 +62,19 @@ app.get("/record", function(req, res){
 app.get("/profile", function(req, res){
   res.render("profile", {username: username});
 });
+
+app.post("/record", function(req, res){
+  
+  patientID.patientName = req.body.patientName;
+  patientID.patientDOB = req.body.patientDOB;
+  res.render("client");
+
+  //uncomment below to test is patientID is updated
+  // console.log(patientID);
+});
+
+
+
 
 app.post("/profile", function(req, res){
   user.username = req.body.username;

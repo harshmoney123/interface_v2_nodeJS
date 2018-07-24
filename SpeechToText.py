@@ -130,7 +130,9 @@ class SttIntegrated:
         # Writes the transcript to a file
         trans_file = requests.get(link)
         file_name = self.inputFilePath[:-4]+"AWS" + ".txt"
-        open(file_name, 'wb').write(trans_file.content)
+        output_file = open(file_name, 'wb')
+        output_file.write(trans_file.content)
+        output_file.close()
         print("Amazon: Transcription complete.")
         return
 
@@ -153,20 +155,24 @@ class SttIntegrated:
 
          # create the json file out of
         file_name = self.inputFilePath[:-4]
-        with open(file_name + "IBM" + ".txt", 'w') as f:
-            sys.stdout = f
-            print(r.text)
+        #with open(file_name + "IBM" + ".txt", 'w') as f:
+        #   sys.stdout = f
+        #  print(r.text)
+        output_file = open(file_name + "IBM" + ".txt", 'w')
+        output_file.write(r.text)
+        output_file.close()
+        print("IBM: Transcription complete.")
 
     def main(self):
         google = threading.Thread(name='googleSTT', target= self.google_stt)
         amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
-        #ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
+        ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
         google.start()
         amazon.start()
-        #ibm.start()
+        ibm.start()
         google.join()
         amazon.join()
-        #ibm.join()
+        ibm.join()
         #return "speech to text finished"
 
 # to run it from console like a simple script use

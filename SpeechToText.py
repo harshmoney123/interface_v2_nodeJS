@@ -28,21 +28,21 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/emilyzhao/Downloads/88cb41572f69.json'
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/wangruohan/Documents/nlp/88cb41572f69.json'
 
         # fix as necessary
-        self.s3_region = "FILL IN YOUR OWN"
-        self.s3_bucket_name = "FILL IN YOUR OWN"
+        self.s3_region = "us-east-2"
+        self.s3_bucket_name = "celerfama"
 
     def google_stt(self):
         # Instantiates a client
         client = speech.SpeechClient()
         
-        sound = AudioSegment.from_file(self.inputFilePath, format="webm")
+        # sound = AudioSegment.from_file(self.inputFilePath, format="wav")
         # if(sound.channels != 1):#If it's not mono
-        sound = sound.set_channels(1)#Change it to mono
-        sound.export(self.inputFilePath, format="wav")#Export them as wav files
-        print('Conversion complete')
+        # sound = sound.set_channels(1)#Change it to mono
+        # sound.export(self.inputFilePath, format="wav")#Export them as wav files
+        # print('Conversion complete')
         # Instantiates a client and uploads file
         storage_client = storage.Client()
         # Parameter is the name of the Google Cloud bucket
@@ -94,9 +94,9 @@ class SttIntegrated:
     def amazon_stt(self):
 
         #Amazon Web Service information
-        aws_access_key_id = 'FILL IN YOUR OWN'
-        aws_secret_access_key = 'FILL IN YOUR OWN'
-        region_name = 'FILL IN YOUR OWN'
+        aws_access_key_id = 'AKIAJLZ2FGF5MCEBM75A'
+        aws_secret_access_key = 'H1/xcaafFzFW6v5PDOVBE3FqggIkurugdSH2BuUn'
+        region_name = 'us-east-2'
 
         #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
@@ -130,7 +130,9 @@ class SttIntegrated:
         # Writes the transcript to a file
         trans_file = requests.get(link)
         file_name = self.inputFilePath[:-4]+"AWS" + ".txt"
-        open(file_name, 'wb').write(trans_file.content)
+        output_file = open(file_name, 'wb')
+        output_file.write(trans_file.content)
+        output_file.close()
         print("Amazon: Transcription complete.")
         return
 
@@ -139,10 +141,10 @@ class SttIntegrated:
         url = 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
 
           # bluemix authentication username
-        username = 'FILL WITH YOUR OWN'
+        username = '5f199978-b5d4-4540-93ba-94c01a72b825'
 
          # bluemix authentication password
-        password = 'FILL WITH YOUR OWN'
+        password = 'jFyjjXg4XgIh'
 
         headers = {'Content-Type': 'audio/wav'}
 
@@ -153,21 +155,21 @@ class SttIntegrated:
 
          # create the json file out of
         file_name = self.inputFilePath[:-4]
-        with open(file_name + "IBM" + ".txt", 'w') as f:
-            sys.stdout = f
-            print(r.text)
+        output_file = open(file_name + "IBM" + ".txt", 'w')
+        output_file.write(r.text)
+        output_file.close()
+        print("IBM: Transcription complete.")
 
     def main(self):
         google = threading.Thread(name='googleSTT', target= self.google_stt)
-        #amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
+        amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
         ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
         google.start()
-        #amazon.start()
+        amazon.start()
         ibm.start()
         google.join()
-        #amazon.join()
+        amazon.join()
         ibm.join()
-        #return "speech to text finished"
 
 # to run it from console like a simple script use
 if __name__ == "__main__":

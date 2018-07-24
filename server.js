@@ -46,8 +46,6 @@ function addTranscriptionToDB(transcription){
   });
 }
 
-var Patient = mongoose.model("Patient", MySchema);
-
 
 app.get("/", function(req, res){
   res.render("landing");
@@ -66,9 +64,10 @@ app.post("/profile", function(req, res){
   user.password = req.body.password;
   Doctor.find({name: user.username, password: user.password}, function(err, person){
       if(err){
-          console.log(err);
-      }else if(person.length == 0) {
-          res.render("login", {found: false});
+        console.log(err);
+      }else if(person.length == 0){
+        res.render("login", {found: false});
+          
       }else{
           res.render("profile", {person: person[0]});
       }
@@ -79,14 +78,14 @@ app.get("/login", function(req, res){
   res.render("login", {found: true});
 });
 
-app.post("/login", function(req, res) {
+app.post("/login", function(req, res){
   user.username = req.body.username;
   user.password = req.body.password;
   addTranscriptionToDB("I just created an account.");
-  res.render("login", {found: true})
+  res.render("login", {found: true});
 })
 
-app.get("/signup", function(req, res) {
+app.get("/signup", function(req, res){
   res.render("signup");
 })
 

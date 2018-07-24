@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#COMMAND F and search for "FILL WITH YOU OWN" and fill in variables with your respective password and paths
+#COMMAND F and search for "FILL WITH YOUR OWN" and fill in variables with your respective password and paths
 
 import os
 import sys
@@ -28,11 +28,19 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
+<<<<<<< HEAD
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/wangruohan/Documents/nlp/88cb41572f69.json'
 
         # fix as necessary
         self.s3_region = "us-east-2"
         self.s3_bucket_name = "celerfama"
+=======
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL WITH YOUR OWN'
+
+        # fix as necessary
+        self.s3_region = "FILL WITH YOUR OWN"
+        self.s3_bucket_name = "FILL WITH YOUR OWN"
+>>>>>>> 089a03aeb0e200499d72da168e3f76b0220f8445
 
     def google_stt(self):
         # Instantiates a client
@@ -94,9 +102,15 @@ class SttIntegrated:
     def amazon_stt(self):
 
         #Amazon Web Service information
+<<<<<<< HEAD
         aws_access_key_id = 'AKIAJLZ2FGF5MCEBM75A'
         aws_secret_access_key = 'H1/xcaafFzFW6v5PDOVBE3FqggIkurugdSH2BuUn'
         region_name = 'us-east-2'
+=======
+        aws_access_key_id = 'FILL WITH YOUR OWN'
+        aws_secret_access_key = 'FILL WITH YOUR OWN'
+        region_name = 'FILL WITH YOUR OWN'
+>>>>>>> 089a03aeb0e200499d72da168e3f76b0220f8445
 
         #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
@@ -163,6 +177,7 @@ class SttIntegrated:
     def main(self):
         google = threading.Thread(name='googleSTT', target= self.google_stt)
         amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
+<<<<<<< HEAD
         ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
         google.start()
         amazon.start()
@@ -170,6 +185,16 @@ class SttIntegrated:
         google.join()
         amazon.join()
         ibm.join()
+=======
+        #ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
+        google.start()
+        amazon.start()
+        #ibm.start()
+        google.join()
+        amazon.join()
+        #ibm.join()
+        #return "speech to text finished"
+>>>>>>> 089a03aeb0e200499d72da168e3f76b0220f8445
 
 # to run it from console like a simple script use
 if __name__ == "__main__":

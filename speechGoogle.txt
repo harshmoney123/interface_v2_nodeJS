@@ -1,2 +1,2 @@
-Transcript: b'auto-return age restriction thank you'
-Confidence: 0.7390890121459961
+Transcript: b'yeah I did'
+Confidence: 0.9720661640167236

@@ -14,6 +14,8 @@
             $("#google-navtab").html(data.data);
           }else if(data.company === "AWS"){
             $("#amazon-navtab").html(data.data);
+          }else if(data.company === "IBM"){
+            $("#ibm-navtab").html(data.data);
           }
         } catch(error) {
             alert(error);

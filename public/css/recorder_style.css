@@ -39,25 +39,26 @@ h1 {
 
 
 .btn-group-justified {
-	display: flex; 
+	/*display: flex; 
 	/*display: inline-block; */
-    justify-content: space-between;
+    /*justify-content: space-between;
 	width: 40%;
-	padding: 1% 10%; 
+	/*padding: 1% 10%; 
 	/*padding-top: 3%; */
-
-
+	/*position: fixed;*/
+	/*margin: 1%%;
 	/* position: relative;
 	top: 15%;
 	right: 50%; */
-	float: left;
+	/*float: left;*/
 
-
-
-	/*border-style: dotted;
-	border-color: red; */
+	border-style: dotted;
+	border-color: red; 
 } 
 
+.btn-group {
+	margin: 0 10%;
+}
 
 .glyphicon {
 	text-align: center;
@@ -80,7 +81,7 @@ button {
 	padding-top: 1%;
 }
 
- .tab-content {
+.tab-content {
 	padding: 10px;
 } 
 
@@ -112,20 +113,41 @@ footer {
 
 
 #identify-patient {
-	float: left;
-	width: 40%;
+	/*float: left;
+	/*width: 100%;*/
+	margin: 0 2%;
+	/*margin-left: 2%; */
+	
 
-	/*border-style: dotted;
-	border-color: blue;*/
+	border-style: dotted;
+	border-color: blue;
+}
+
+
+.container {
+	margin: 0;
+
+	border-style: solid;
+	border-color: orange;
+
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0 !important; 
+    padding-left:0 !important;
 }
 
 #navbar-and-transcript {
-	float: left;
-	width: 60%;
-	display: inline-block;
+	/*float: left;
+	width: 100%;
+	z-index: -1;*/
+	/*margin-right: 2%;*/
 
-	/*border-style: dotted;
-	border-color: red;*/
+	
+
+
+	border-style: dotted;
+	border-color: red;
 }
 
 

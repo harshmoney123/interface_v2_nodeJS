@@ -1,2 +1,2 @@
-Transcript: b'yeah I did'
-Confidence: 0.9720661640167236
+Transcript: b'hello doctor I am student health Vanderbilt'
+Confidence: 0.8706727027893066

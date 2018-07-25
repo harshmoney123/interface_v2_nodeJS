@@ -1,10 +1,10 @@
-  {
+{
    "results": [
       {
          "alternatives": [
             {
-               "confidence": 0.526, 
-               "transcript": "he "
+               "confidence": 0.514, 
+               "transcript": "hello doctor "
             }
          ], 
          "final": true
@@ -12,17 +12,8 @@
       {
          "alternatives": [
             {
-               "confidence": 0.759, 
-               "transcript": "yes I did "
-            }
-         ], 
-         "final": true
-      }, 
-      {
-         "alternatives": [
-            {
-               "confidence": 0.444, 
-               "transcript": "yeah well we'll be there in about three hours "
+               "confidence": 0.621, 
+               "transcript": "I am scared enough then about "
             }
          ], 
          "final": true

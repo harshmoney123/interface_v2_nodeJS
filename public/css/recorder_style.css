@@ -35,10 +35,10 @@ h1 {
 	padding: 6px 0;
 	font-size: 12px;
 	border-radius: 30px;
-}
+} 
 
 
-.btn-group-justified {
+.btn-group{
 	/*display: flex; 
 	/*display: inline-block; */
     /*justify-content: space-between;
@@ -52,13 +52,11 @@ h1 {
 	right: 50%; */
 	/*float: left;*/
 
-	border-style: dotted;
-	border-color: red; 
+	/*border-style: dotted;
+	border-color: green; */
+	
+	left: 13%;
 } 
-
-.btn-group {
-	margin: 0 10%;
-}
 
 .glyphicon {
 	text-align: center;
@@ -119,18 +117,18 @@ footer {
 	/*margin-left: 2%; */
 	
 
-	border-style: dotted;
-	border-color: blue;
+	/*border-style: dotted;
+	border-color: blue;*/
 }
 
 
-.container {
+/*.container {
 	margin: 0;
 
 	border-style: solid;
 	border-color: orange;
 
-}
+} */
 
 .no-gutter > [class*='col-'] {
     padding-right:0 !important; 
@@ -146,8 +144,8 @@ footer {
 	
 
 
-	border-style: dotted;
-	border-color: red;
+	/*border-style: dotted;
+	border-color: red;*/
 }
 
 

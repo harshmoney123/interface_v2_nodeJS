@@ -10,11 +10,11 @@
         console.log(data);
         try {
           if(data.company === "Google"){
-            $("#google-navtab").html(data.data);
+            $("#google-navtab").append(data.data);
           }else if(data.company === "AWS"){
-            $("#amazon-navtab").html(data.data);
+            $("#amazon-navtab").append(data.data);
           }else if(data.company === "IBM"){
-            $("#ibm-navtab").html(data.data);
+            $("#ibm-navtab").append(data.data);
           }
         } catch(error) {
             alert(error);

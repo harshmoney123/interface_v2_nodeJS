@@ -26,31 +26,27 @@ AudioSegment.converter = which("ffmpeg")
 class SttIntegrated:
     def __init__(self, file_path):
         self.inputFilePath = file_path
-        # Hard-coding the path for credentials file downloaded from Google API dashboard.
-        
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL YOUR OWN'
 
-        # fix as necessary
+        # Hard-coding the path for credentials files or key/passwords:
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ''
         self.s3_region = "us-east-2"
         self.s3_bucket_name = "medicalrecordings"
+        self.aws_access_key_id = ''
+        self.aws_secret_access_key = ''
+        self.IBM_username =  ""
+        self.IBM_password = ""
 
     def google_stt(self):
         # Instantiates a client
         client = speech.SpeechClient()
-        
-        sound = AudioSegment.from_file(self.inputFilePath, format="webm")
-        if(sound.channels != 1):#If it's not mono
-            sound = sound.set_channels(1)#Change it to mono
-        sound.export(self.inputFilePath, format="wav")#Export them as wav files
-        print('Conversion complete')
         # Instantiates a client and uploads file
         storage_client = storage.Client()
         # Parameter is the name of the Google Cloud bucket
         bucket = storage_client.lookup_bucket('celerfama2')
         folder = bucket.list_blobs()
         with open(self.inputFilePath, 'rb') as file:
-            blob = Blob(os.path.basename(file.name), bucket)
-            print("Google: Uploading: " + os.path.basename(file.name))
+            blob = Blob(self.inputFilePath[7:], bucket)
+            print("Google: Uploading: " + self.inputFilePath[7:])
             blob.upload_from_filename(self.inputFilePath)
 
         # Transcribes the file in the cloud
@@ -58,9 +54,7 @@ class SttIntegrated:
             print("Google: Transcribing " + element.name)
             audio = types.RecognitionAudio(uri="gs://celerfama2/" + element.name)
             config = types.RecognitionConfig(
-                # Option to get word specific info like time stamps
                 enable_word_time_offsets=True,
-                # Language of the audio
                 language_code='en-US')
 
             # Detects speech in the audio file
@@ -69,8 +63,7 @@ class SttIntegrated:
             print('Google: Waiting for operation to complete...')
             response = operation.result()
 
-            file_name = element.name[:-4]
-            output_file = open(file_name+"Google" + ".txt", "w")
+            output_file = open(self.inputFilePath[:-4]+"Google" + ".txt", "w")
 
             for result in response.results:
                 for alternative in result.alternatives:
@@ -93,11 +86,6 @@ class SttIntegrated:
 
     def amazon_stt(self):
 
-        #Amazon Web Service information
-        aws_access_key_id = 'FILL YOUR OWN'
-        aws_secret_access_key = 'FILL YOUR OWN'
-        region_name = 'us-east-2'
-
         #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
         bucket = s3.Bucket(self.s3_bucket_name)
@@ -106,7 +94,7 @@ class SttIntegrated:
         #Using Amazon Transcription Services
         transcribe = boto3.client('transcribe', aws_access_key_id=aws_access_key_id,
                                   aws_secret_access_key=aws_secret_access_key,
-                                  region_name=region_name)
+                                  region_name=self.s3_region)
         ticks = str(time.time())
         job_name = "Transcribing" + self.inputFilePath[7:] + ticks
         job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/" + self.inputFilePath[7:]
@@ -141,10 +129,10 @@ class SttIntegrated:
         url = 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
 
           # bluemix authentication username
-        username = 'FILL YOUR OWN'
+        username = self.IBM_username
 
          # bluemix authentication password
-        password = 'FILL YOUR OWN'
+        password = self.IBM_password
 
         headers = {'Content-Type': 'audio/wav'}
 
@@ -166,13 +154,13 @@ class SttIntegrated:
 
     def main(self):
         google = threading.Thread(name='googleSTT', target= self.google_stt)
-        amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
+        # amazon = threading.Thread(name='amazonSTT', target= self.amazon_stt)
         ibm = threading.Thread(name='ibmSTT', target= self.ibm_stt)
         google.start()
-        amazon.start()
+        # amazon.start()
         ibm.start()
         google.join()
-        amazon.join()
+        # amazon.join()
         ibm.join()
         #return "speech to text finished"
 

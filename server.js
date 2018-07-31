@@ -114,11 +114,11 @@ server.on('connection', function(client) {
     var path = "audios/" + filename + company + ".txt";
     fs.readFile(path, 'utf8', function (err,data) {
       if (err) {
-        console.log(err);
+        console.log("Cannot open file: " + path);
       }else{
         console.log("send transcription of " + company + "," + filename);
         client.send({company: company, data: data});
-        if(company === "Google") addTranscriptionToDB(data);
+        // if(company === "Google") addTranscriptionToDB(data);
       }
     });
   }
@@ -151,8 +151,8 @@ server.on('connection', function(client) {
         queue.push(tmpFileName);
         console.log("transcribing " + tmpFileName);
         exec("python3 audios/SpeechToText.py " + tmpFilePath, function(){
-          // getTextFromFile("Google", tmpFileNumber);
           var fileName = queue.shift();
+          getTextFromFile("Google", fileName);
           getTextFromFile("AWS", fileName);
           getTextFromFile("IBM", fileName);
           console.log("finished transcribe " + fileName);
@@ -173,7 +173,7 @@ server.on('connection', function(client) {
       tmpFileWriter.end();
       fileWriter.end();
       exec("python3 audios/SpeechToText.py " + tmpFilePath, function(){
-          // getTextFromFile("Google", tmpFileNumber);
+          getTextFromFile("Google", tmpFileName);
           getTextFromFile("AWS", tmpFileName);
           getTextFromFile("IBM", tmpFileName);
           console.log("finished transcribe " + tmpFileName);

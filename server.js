@@ -4,10 +4,10 @@ var express = require("express"),
     bodyparser = require("body-parser"),
     wav = require('wav'),
     fs = require('fs'),
-    outFile = 'speech.wav',
-    spawn = require("child_process"),
     fs = require('fs'),
-    mongoose = require("mongoose");
+    mongoose = require("mongoose"),
+    unpipe = require('unpipe');
+const { exec } = require('child_process');
     
 app.use(bodyparser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -15,14 +15,15 @@ app.use(express.static(__dirname + '/public'));
 mongoose.connect("mongodb://localhost:27017/transcriptionDB",{useNewUrlParser:true});
 
 
-
 var user = {username: "", password: ""};
+var patientID = {patientName: "", patientDOB: ""};
 
 var MySchema = new mongoose.Schema({
     name: String,
     password: String,
     transcription: String,
     patient: String,
+    birthday: String,
     date: String
 });
 var Doctor = mongoose.model("Doctor", MySchema);
@@ -32,7 +33,8 @@ function addTranscriptionToDB(transcription){
   var person = new Doctor({
     name: user.username,
     password: user.password,
-    patient: "My patient",
+    patient: patientID.patientName,
+    birthday: patientID.patientDOB,
     transcription: transcription,
     date: time.toString()
   });
@@ -57,6 +59,13 @@ app.get("/record", function(req, res){
 
 app.get("/profile", function(req, res){
   res.render("profile", {username: username});
+});
+
+app.post("/record", function(req, res){
+  
+  patientID.patientName = req.body.patientName;
+  patientID.patientDOB = req.body.patientDOB;
+  res.render("client");
 });
 
 app.post("/profile", function(req, res){
@@ -96,50 +105,82 @@ app.listen(3700, function(){
 
 var server = binaryServer({port: 9001});
 
+
+
 server.on('connection', function(client) {
   console.log('new connection');
 
-  var fileWriter = new wav.FileWriter(outFile, {
-    channels: 1,
-    sampleRate: 48000,
-    bitDepth: 16
-  });
+  function getTextFromFile(company, filename){
+    var path = "audios/" + filename + company + ".txt";
+    fs.readFile(path, 'utf8', function (err,data) {
+      if (err) {
+        console.log(err);
+      }else{
+        console.log("send transcription of " + company + "," + filename);
+        client.send({company: company, data: data});
+        if(company === "Google") addTranscriptionToDB(data);
+      }
+    });
+  }
 
   client.on('stream', function(stream, meta) {
     console.log('new stream');
-    stream.pipe(fileWriter); 
+
+    var time = new Date();
+    var outFile = "audios/" + time.toString() + user.username + "-" + patientID.patientName + '.wav';
+    var tmpFileNumber = Date.now();
+    var tmpFileName = user.username + "-" + patientID.patientName + tmpFileNumber;
+    var tmpFilePath = "audios/" + tmpFileName + ".wav";
+    var queue = [];
+    var fileWriter = new wav.FileWriter(outFile, {
+      channels: 1,
+      sampleRate: 48000,
+      bitDepth: 16
+    });
+    var tmpFileWriter = new wav.FileWriter(tmpFilePath, {
+      channels: 1,
+      sampleRate: 48000,
+      bitDepth: 16
+    });
+    stream.pipe(fileWriter);
+    stream.pipe(tmpFileWriter);
+
+    var myInt = setInterval(function(){
+        unpipe(stream);
+        tmpFileWriter.end();
+        queue.push(tmpFileName);
+        console.log("transcribing " + tmpFileName);
+        exec("python3 audios/SpeechToText.py " + tmpFilePath, function(){
+          // getTextFromFile("Google", tmpFileNumber);
+          var fileName = queue.shift();
+          getTextFromFile("AWS", fileName);
+          getTextFromFile("IBM", fileName);
+          console.log("finished transcribe " + fileName);
+        });
+        tmpFileNumber = Date.now();
+        tmpFileName = user.username + "-" + patientID.patientName + tmpFileNumber;
+        tmpFilePath = "audios/" + tmpFileName + ".wav";
+        tmpFileWriter = new wav.FileWriter(tmpFilePath, {
+          channels: 1,
+          sampleRate: 48000,
+          bitDepth: 16
+        });
+        stream.pipe(tmpFileWriter);
+        stream.pipe(fileWriter);
+    }, 10000);
 
     stream.on('end', function() {
+      tmpFileWriter.end();
       fileWriter.end();
+      exec("python3 audios/SpeechToText.py " + tmpFilePath, function(){
+          // getTextFromFile("Google", tmpFileNumber);
+          getTextFromFile("AWS", tmpFileName);
+          getTextFromFile("IBM", tmpFileName);
+          console.log("finished transcribe " + tmpFileName);
+        });
+      clearInterval(myInt);
       console.log('wrote to file ' + outFile);
-      try {
-        //Execute python functions
-        pythonProcess = spawn.spawnSync('python3',['SpeechToText.py', 'speech.wav']);
-
-        function getTextFromFile(company){
-            var path = "speech" + company + ".txt";
-            fs.readFile(path, 'utf8', function (err,data) {
-              if (err) {
-                console.log(err);
-              }
-              console.log("send transcription of" + company);
-              client.send({company: company, data: data});
-              if(company === "Google") addTranscriptionToDB(data);
-            });
-        }
-        getTextFromFile("Google");
-        getTextFromFile("AWS");
-        getTextFromFile("IBM");
-      }
-      catch(error) {
-        console.log(error);
-        // client.send({msg: "Error when transcribe.", type: "error"});
-      }
     });
   });
 });
-
-
-
-
 

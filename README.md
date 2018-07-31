@@ -13,7 +13,7 @@
 - Go to `http://localhost:3700` in the browser
 
 - Click "Log In" on the top right
-	--In order to use the Login, the name must already be in the Mongo database. In our current version, that BLAHBLAH
+	--In order to use the Login, the name must already be in the Mongo database. All users are currently entered as doctors.
 
 - Enter your name， the name should be in the database. Click the button to go to the record page
 
@@ -21,4 +21,4 @@
 
 - wait for a while
 
-- you can see the content in the tabs
+- you can see the content in the tabs - IBM now functional

@@ -2,8 +2,7 @@
   var client = new BinaryClient('ws://localhost:9001');
   
   client.on('open', function() {
-    window.Stream = client.createStream();
-
+  
     client.on('stream', function(stream, meta){    ;
       stream.on('data', function(data){
         console.log("Received response from the server.");
@@ -64,6 +63,7 @@
     stopRecord.disabled = true;
     
     startRecord.onclick = e => {
+      window.Stream = client.createStream();
       startRecord.disabled = true;
       pauseRecord.disabled = false;
       stopRecord.disabled = false;

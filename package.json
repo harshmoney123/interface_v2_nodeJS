@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "mongoose": "^5.2.4",
+    "unpipe": "^1.0.0",
     "wav": "^1.0.2"
   }
 }

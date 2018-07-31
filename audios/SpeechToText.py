@@ -28,21 +28,21 @@ class SttIntegrated:
         self.inputFilePath = file_path
         # Hard-coding the path for credentials file downloaded from Google API dashboard.
         
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/wangruohan/Documents/nlp/88cb41572f69.json'
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = 'FILL YOUR OWN'
 
         # fix as necessary
         self.s3_region = "us-east-2"
-        self.s3_bucket_name = "celerfama"
+        self.s3_bucket_name = "medicalrecordings"
 
     def google_stt(self):
         # Instantiates a client
         client = speech.SpeechClient()
         
-        # sound = AudioSegment.from_file(self.inputFilePath, format="wav")
-        # if(sound.channels != 1):#If it's not mono
-        # sound = sound.set_channels(1)#Change it to mono
-        # sound.export(self.inputFilePath, format="wav")#Export them as wav files
-        # print('Conversion complete')
+        sound = AudioSegment.from_file(self.inputFilePath, format="webm")
+        if(sound.channels != 1):#If it's not mono
+            sound = sound.set_channels(1)#Change it to mono
+        sound.export(self.inputFilePath, format="wav")#Export them as wav files
+        print('Conversion complete')
         # Instantiates a client and uploads file
         storage_client = storage.Client()
         # Parameter is the name of the Google Cloud bucket
@@ -94,29 +94,29 @@ class SttIntegrated:
     def amazon_stt(self):
 
         #Amazon Web Service information
-        aws_access_key_id = 'AKIAJLZ2FGF5MCEBM75A'
-        aws_secret_access_key = 'H1/xcaafFzFW6v5PDOVBE3FqggIkurugdSH2BuUn'
+        aws_access_key_id = 'FILL YOUR OWN'
+        aws_secret_access_key = 'FILL YOUR OWN'
         region_name = 'us-east-2'
 
         #Accessing Amazon S3 bucket (existing) and uploading sound file (.wav)
         s3 = boto3.resource('s3',aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
         bucket = s3.Bucket(self.s3_bucket_name)
-        bucket.upload_file(self.inputFilePath , self.inputFilePath)
+        bucket.upload_file(self.inputFilePath, self.inputFilePath[7:])
 
         #Using Amazon Transcription Services
         transcribe = boto3.client('transcribe', aws_access_key_id=aws_access_key_id,
                                   aws_secret_access_key=aws_secret_access_key,
                                   region_name=region_name)
         ticks = str(time.time())
-        job_name = "Transcribing" + self.inputFilePath + ticks
-        job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/" + self.inputFilePath
+        job_name = "Transcribing" + self.inputFilePath[7:] + ticks
+        job_uri = "http://" + self.s3_bucket_name + ".s3-" + self.s3_region + ".amazonaws.com/" + self.inputFilePath[7:]
         transcribe.start_transcription_job(
             TranscriptionJobName=job_name,
             Media={'MediaFileUri': job_uri},
             MediaFormat='wav',
             LanguageCode='en-US'
         )
-        print("Amazon:Transcribing " + self.inputFilePath)
+        print("Amazon:Transcribing " + self.inputFilePath[7:])
         #Returns status on transcription job
         while True:
             status = transcribe.get_transcription_job(TranscriptionJobName=job_name)
@@ -141,13 +141,14 @@ class SttIntegrated:
         url = 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
 
           # bluemix authentication username
-        username = '5f199978-b5d4-4540-93ba-94c01a72b825'
+        username = 'FILL YOUR OWN'
 
          # bluemix authentication password
-        password = 'jFyjjXg4XgIh'
+        password = 'FILL YOUR OWN'
 
         headers = {'Content-Type': 'audio/wav'}
 
+        print("IBM:Transcribing " + self.inputFilePath[7:])
          # Open audio file(.wav) in wave format
         audio = open(self.inputFilePath, 'rb')
 
@@ -155,6 +156,9 @@ class SttIntegrated:
 
          # create the json file out of
         file_name = self.inputFilePath[:-4]
+        #with open(file_name + "IBM" + ".txt", 'w') as f:
+        #   sys.stdout = f
+        #  print(r.text)
         output_file = open(file_name + "IBM" + ".txt", 'w')
         output_file.write(r.text)
         output_file.close()
@@ -170,7 +174,7 @@ class SttIntegrated:
         google.join()
         amazon.join()
         ibm.join()
-
+        #return "speech to text finished"
 
 # to run it from console like a simple script use
 if __name__ == "__main__":

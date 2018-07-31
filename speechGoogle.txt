@@ -1,4 +1,0 @@
-Transcript: b"I love going to the doctor's"
-Confidence: 0.9216036796569824
-Transcript: b" but I don't like shots so"
-Confidence: 0.8956292271614075
